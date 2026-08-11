@@ -1,5 +1,5 @@
 [tools]
-python = "3.13.14"
+python = "3.13"
 uv = "0.11.27"
 
 [settings]

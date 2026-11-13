@@ -26,8 +26,7 @@ pytest tests/unit/services/test_item.py::test_create_item -v
 tests are unqualified (e.g. `from core.config import get_settings`, not
 `from src.core...`).
 
-Entering the repo directory (mise's `enter` hook) creates `.venv` if missing (named
-after the repo directory), auto-runs `uv sync --all-groups`
+Entering the repo directory (mise's `enter` hook) auto-runs `uv sync --all-groups`
 and installs pre-commit hooks (`fix` and [gitleaks](https://github.com/gitleaks/gitleaks)
 on pre-commit, `typecheck` on pre-push). gitleaks scans staged changes for
 hardcoded secrets; pre-commit manages its own Go toolchain to run it, so no

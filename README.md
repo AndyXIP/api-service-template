@@ -1,6 +1,6 @@
 # api-service-template
 
-![Status](https://img.shields.io/badge/Status-Template-blue) ![Python](https://img.shields.io/badge/Python-3.13+-3776AB?logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-0.139+-009688?logo=fastapi&logoColor=white) ![Pydantic](https://img.shields.io/badge/Pydantic-2-E92063?logo=pydantic&logoColor=white) ![structlog](https://img.shields.io/badge/structlog-JSON%20logging-black) ![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Template-blue) ![Python](https://img.shields.io/badge/Python-3.14+-3776AB?logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-0.139+-009688?logo=fastapi&logoColor=white) ![Pydantic](https://img.shields.io/badge/Pydantic-2-E92063?logo=pydantic&logoColor=white) ![structlog](https://img.shields.io/badge/structlog-JSON%20logging-black) ![License](https://img.shields.io/badge/License-MIT-green)
 
 A FastAPI backend service template. Clone it, delete the example `items`
 resource, and build your actual service in its place — the surrounding
@@ -125,7 +125,8 @@ service-template/
 │   └── SECURITY.md            # placeholder — how to report a vulnerability
 ├── .claude/settings.json      # Claude Code permissions allowlist (project-shared, not personal)
 ├── .mise/
-│   ├── config.toml            # pinned Python/uv versions, `enter` hook (uv sync + pre-commit install)
+│   ├── config.toml            # pinned Python/uv versions, `enter` hook (create venv + uv sync + pre-commit install)
+│   ├── mise.lock              # tool checksums/URLs per platform — `mise lock` after bumping versions
 │   └── tasks/                 # dev, check, fix, test, test-unit, typecheck, build
 ├── docs/                      # detail linked from CLAUDE.md: architecture, commands, testing, ci, security
 ├── src/

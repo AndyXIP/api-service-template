@@ -1,3 +1,4 @@
+import builtins
 from typing import Protocol
 from uuid import UUID
 
@@ -17,7 +18,8 @@ class ItemRepository(Protocol):  # pragma: no cover
 
     def get(self, item_id: UUID) -> Item: ...
 
-    def list(self) -> list[Item]: ...
+    # `builtins.` because 3.14's lazy annotations resolve `list` to this method
+    def list(self) -> builtins.list[Item]: ...
 
     def update(self, item: Item) -> None: ...
 
@@ -46,7 +48,7 @@ class InMemoryItemRepository:
         except KeyError:
             raise ItemNotFoundError(item_id) from None
 
-    def list(self) -> list[Item]:
+    def list(self) -> builtins.list[Item]:
         return list(self._items.values())
 
     def update(self, item: Item) -> None:

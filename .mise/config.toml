@@ -1,9 +1,13 @@
 [tools]
-python = "3.13.14"
-uv = "0.11.27"
+python = "3.14.10"
+uv = "0.13.8"
 
 [settings]
-python.uv_venv_auto = "create|source"
+python.uv_venv_auto = "source"
+locked = true
 
 [hooks]
-enter = "uv sync --all-groups -q && pre-commit install --hook-type pre-commit --hook-type pre-push > /dev/null"
+# Venv is created here rather than by mise's uv_venv_auto `create`, which passes an
+# explicit path to `uv venv` and so writes no prompt (shell shows ".venv").
+# `--prompt .` names it after the repo directory.
+enter = "[ -d .venv ] || uv venv -q --prompt . --python \"$(mise which python)\"; uv sync --all-groups -q && pre-commit install --hook-type pre-commit --hook-type pre-push > /dev/null"

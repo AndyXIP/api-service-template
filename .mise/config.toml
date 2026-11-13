@@ -7,13 +7,11 @@ uv = "0.13.8"
 
 [settings]
 python.uv_venv_auto = "create|source"
-# `--prompt .` names the venv after the repo dir
 python.uv_venv_create_args = ["--prompt", "."]
 locked = true
 locked_verify_provenance = true
 
 [env]
-# Stop uv picking its own managed Python over mise's
 UV_PYTHON_PREFERENCE = "only-system"
 
 [hooks]

@@ -11,8 +11,7 @@ COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-dev
 
 FROM python:${PYTHON_VERSION}-alpine AS final
-# The app runs from the copied venv, so the base image's pip is dead weight - and
-# its vendored deps (urllib3, msgpack, ...) trip the Trivy scan in CI.
+# pip is unused at runtime and its vendored deps get flagged by Trivy
 RUN adduser -D app \
     && rm -rf /usr/local/bin/pip* /usr/local/lib/python*/site-packages/pip* /usr/local/lib/python*/ensurepip
 WORKDIR /app

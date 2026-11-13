@@ -1,3 +1,6 @@
+# Keep in sync with `version` in .github/actions/mise-install/action.yml
+min_version = "2026.11.7"
+
 [tools]
 python = "3.14.10"
 uv = "0.13.8"
@@ -5,6 +8,8 @@ uv = "0.13.8"
 [settings]
 python.uv_venv_auto = "source"
 locked = true
+# Re-check GitHub attestations on install, not just the lockfile checksum
+locked_verify_provenance = true
 
 [hooks]
 # Venv is created here rather than by mise's uv_venv_auto `create`, which passes an

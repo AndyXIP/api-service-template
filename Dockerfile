@@ -1,5 +1,5 @@
-ARG PYTHON_VERSION=3.13.14
-ARG UV_VERSION=0.11.27
+ARG PYTHON_VERSION=3.14.10
+ARG UV_VERSION=0.13.8
 
 FROM ghcr.io/astral-sh/uv:${UV_VERSION} AS uv
 
@@ -11,7 +11,9 @@ COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-dev
 
 FROM python:${PYTHON_VERSION}-alpine AS final
-RUN adduser -D app
+# pip is unused at runtime and its vendored deps get flagged by Trivy
+RUN adduser -D app \
+    && rm -rf /usr/local/bin/pip* /usr/local/lib/python*/site-packages/pip* /usr/local/lib/python*/ensurepip
 WORKDIR /app
 
 COPY --from=build --chown=app:app /app/.venv ./.venv

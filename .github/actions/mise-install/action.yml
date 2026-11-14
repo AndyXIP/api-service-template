@@ -5,8 +5,9 @@ runs:
   using: composite
   steps:
     - name: Install mise
-      uses: jdx/mise-action@v4.2.0
+      uses: jdx/mise-action@v5.2.8
       with:
+        version: 2026.11.7  # keep in sync with min_version in .mise/config.toml
         install: true
         cache: true
 
